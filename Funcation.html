@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNCTION</title>
+</head>
+
+<body>
+    <h2 id="dateTime"></h2>
+    <script>
+        //1. Write a function that displays current date & time in your browser.
+        function displayDateTime() {
+            var now = new Date();
+            document.getElementById("dateTime").innerText = now.toString();
+        }
+        displayDateTime();
+
+        //2. Write a function that takes first & last name and then it greets the user using his full name.
+        function greetUser(firstName, lastName) {
+            var fullName = firstName + " " + lastName;
+            document.write("Hello, " + fullName + "!");
+        }
+        greetUser("Nida", "Shakir");
+
+        //3. Write a function that adds two numbers (input by user) and returns the sum of two numbers.
+        function addTwoNumbers() {
+            var num1 = parseFloat(prompt("Enter the first number:"));
+            var num2 = parseFloat(prompt("Enter the second number:"));
+
+            const sum = num1 + num2;
+            return sum;
+        }
+        var result = addTwoNumbers();
+        alert("The sum is: " + result);
+
+
+        //4. Calculator:
+        //Write a function that takes three arguments num1, num2 & operator & compute the desired operation. Return and show the desired result in your browser.
+        function calculator(num1, num2, operator) {
+            if (operator === '+') {
+                return num1 + num2;
+            } else if (operator === '-') {
+                return num1 - num2;
+            } else if (operator === '*') {
+                return num1 * num2;
+            } else {
+                return "Invalid operator";
+            }
+
+        }
+        alert("Result: " + result);
+
+        //5. Write a function that squares its argument.
+        document.write("<h1> function that squares it's argument</h1>");
+        var arg = parseInt(prompt("Enter any number you want to get square of :"));
+        function square(num) {
+            return num * num;
+        }
+        document.write(`<p>Square of ${arg} is ${square(arg)}</p>`);
+
+        //6. Write a function that computes factorial of a number.
+        var n = parseInt(prompt("enter a number to get it's factorial :"));
+        function factorial(n) {
+            if (n == 0 || n == 1) {
+                return 1
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+        document.write("<h1> function that returns factorial of any given number : </h1>");
+        document.write(`facotrial of ${n} is : ${factorial(n)}`);
+
+        //7. Write a function that take start and end number as inputs & display counting in your browser.
+        var startingNum = parseInt(prompt("enter a number from where you want to start counting :"));
+        var endingNum = parseInt(prompt("enter a number to stop counting on :"));
+        document.write("<h1> Counting: </h1>");
+        function counting(startingNum, endingNum) {
+            for (var i = startingNum; i <= endingNum; i++) {
+                document.write(i + "<br>");
+            }
+        }
+        counting(startingNum, endingNum);
+
+        //8. Write a nested function that computes hypotenuse of a right angle triangle.
+        //Hypotenuse2 = Base2 + Perpendicular2
+        //Take base and perpendicular as inputs.
+        //Outer function : calculateHypotenuse()
+        //Inner function: calculateSquare()
+        document.write("<h1>A nested function to calculate hypotenuse</h1>");
+        var base = parseInt(prompt("enter value of base:"));
+        var perpendicular = parseInt(prompt("enter value of perpendicular :"));
+        function calculateHypotenuse(base, per) {
+            function square(base, perp) {
+                var baseval = base * base
+                var perpval = perp * perp
+                var values = { baseval, perpval };
+                return values;
+            }
+            var result = square(base, per);
+            var { baseval, perpval } = result;
+            var hypotenuse = Math.sqrt(baseval + perpval);
+            return hypotenuse;
+        }
+        var Result = calculateHypotenuse(base, perpendicular);
+        document.write(`<h3>The hypotenus is : ${result}</h3>`);
+
+        //9. Write a function that calculates the area of a rectangle.
+        //A = width * height
+        //Pass width and height in following manner:
+        //i. Arguments as value
+        //ii. Arguments as variables
+
+        var width = parseInt(prompt("enter width of  rectangle: "));
+        var height = parseInt(prompt("enter height of  rectangle: "));
+
+        function areaOfRect(w, h) {
+            return w * h;
+        }
+        var area = areaOfRect(5, 6);
+        document.write(`<p>arguments as values: ${area}</p>`);
+        var area2 = areaOfRect(width, height);
+        document.write(`<p>arguments as variables: ${area2}</p>`);
+
+        //10. Write a JavaScript function that checks whether a passed string is palindrome or not?
+        //A palindrome is word, phrase, or sequence that reads the same backward as
+        //forward, e.g., madam.
+
+        var word = prompt("Enter a word :");
+        function palindromeChecker(word) {
+            var word2 = word.split("");
+            var result = word2.reverse().join("");
+
+            if (result == word) {
+                alert("it's a palindrome!");
+            } else {
+                alert("it's not a palindrome.")
+            }
+        }
+        palindromeChecker(word);
+
+        //11. Write a JavaScript function that accepts a string as a parameter and converts the first letter of each word of the String in upper case.
+        //EXAMPLE STRING : 'the quick brown fox'
+        //EXPECTED OUTPUT : 'The Quick Brown Fox'
+
+        var str = "the quick brown fox";
+        var capitalStr = [];
+        function toupperstr(str) {
+            var splittedStr = str.split(" ");
+            for (var i = 0; i < splittedStr.length; i++) {
+                var capitalizedStr = splittedStr[i].charAt(0).toUpperCase() + splittedStr[i].slice(1);
+                capitalStr.push(capitalizedStr);
+            }
+        }
+        toupperstr(str);
+        document.write("<h1>Function that return the capitalized version of the provided string</h1>");
+        document.write(`<p>original string : ${str} </p>`);
+        document.write(`<p>capitalized string : ${capitalStr.join(" ")} </p>`);
+
+        //12. Write a JavaScript function that accepts a string as a parameter and find the longest word within the string.
+        //EXAMPLE STRING : 'Web Development Tutorial'
+        //EXPECTED OUTPUT : 'Development'
+        var str2 = "Web Development Tutorial";
+
+        function longestWord(str) {
+            var splitstr2 = str.split(" ");
+            var longestWord = "";
+            for (var i = 0; i < splitstr2.length; i++) {
+                if (splitstr2[i].length > longestWord.length) {
+                    longestWord = splitstr2[i];
+                }
+            }
+            return longestWord;
+        }
+        document.write("<h1> Function that returns the longest word from the given string</h1>");
+        document.write(`<p>given string: ${str2}</p>`);
+        document.write(`<p>longest word : ${longestWord(str2)} <p>`);
+
+        //13. Write a JavaScript function that accepts two arguments, a string and a letter and the function will count the number of
+        //occurrences of the specified letter within the string.
+        //Sample arguments : 'JSResourceS.com', 'o'
+
+        var str3 = "JSResourceS.com";
+        var character = "o";
+        function occurenceFounder(str, char) {
+            var count = 0;
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] == char) {
+                    count++
+                }
+            }
+            return count;
+        }
+        document.write("<h1>A function that returns all occurences of the given character</h1>");
+        document.write(`<p> string : ${str3} <br> character : ${character} <br> occurences of character ${character} are : ${occurenceFounder(str3, character)}  </p> `);
+
+
+        //14. The Geometrizer
+        //Create 2 functions that calculate properties of a circle, using the definitions here.
+        //Create a function called calcCircumference:
+        //• Pass the radius to the function.
+        //• Calculate the circumference based on the radius, and output
+        function calcCircumference(r) {
+            const pi = Math.PI
+            const circumference = 2 * pi * r;
+            return circumference.toFixed(2);
+        }
+        document.write("<h1>Function which returns the circumference of a circle</h1>");
+        document.write(`<p> The circumference is : ${calcCircumference(5)}</p>`);
+
+        //"The circumference is NN".
+        //Create a function called calcArea:
+        //• Pass the radius to the function.
+        //• Calculate the area based on the radius, and output "The area
+        //is NN".
+        //Circumference of circle = 2πr
+        //Area of circle = πr2
+        function calcArea(r) {
+            const area = Math.PI * (r * r);
+            return area.toFixed(2);
+        }
+        document.write("<h1> A function that returns the area of circle</h1>");
+        document.write(`<p>The Area of circle is : ${calcArea(5)}`);
+    </script>
+
+</body>
+
+</html>
